@@ -13,7 +13,7 @@ A modern, containerized, conversational AI agent built with **LangGraph**, **Lan
   - `calculator`: Perform basic math operations (`add`, `sub`, `mul`, `div`).
   - `get_stock_price`: Look up real-time stock quotes.
 - **💾 Conversational Memory & Persistence**: Uses a SQLite checkpointer database (`chatbot.db`) to preserve state, allowing users to switch between past conversations without losing context.
-- **💬 Streamlit UI with Token Streaming**: High-fidelity user interface featuring real-time assistant responses, sidebar thread navigation, and automatic conversation title generation based on the first user message.
+- **💬 Streamlit UI with Token Streaming**: High-fidelity user interface featuring real-time assistant responses, sidebar thread navigation, and automatic conversation title generation based on the first user messages.
 - **🐳 Docker Ready**: Configured for simple containerized execution and deployment.
 
 ---
