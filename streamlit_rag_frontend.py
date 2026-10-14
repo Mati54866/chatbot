@@ -91,7 +91,9 @@ if thread_docs:
 else:
     st.sidebar.info("No document indexed for current chat.")
 
-uploaded_doc = st.sidebar.file_uploader("Upload a PDF or PPTX for this chat", type=["pdf", "pptx", "ppt"])
+uploaded_doc = st.sidebar.file_uploader(
+    "Upload a PDF or PPTX for this chat", type=["pdf", "pptx"]
+)
 if uploaded_doc:
     if uploaded_doc.name in thread_docs:
         st.sidebar.info(f"`{uploaded_doc.name}` already processed for this chat.")

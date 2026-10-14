@@ -114,6 +114,8 @@ def ingest_document(file_bytes: bytes, thread_id: str, filename: Optional[str] =
     ext = os.path.splitext(fname)[1].lower()
     if not ext:
         ext = ".pdf"
+    if ext not in {".pdf", ".pptx"}:
+        raise ValueError("Unsupported file type. Upload a PDF or PPTX file.")
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as temp_file:
         temp_file.write(file_bytes)
@@ -205,6 +207,11 @@ def get_stock_price(symbol: str) -> dict:
     """
     try:
         symbol = symbol.strip().upper()
+        if not symbol or not symbol.isascii() or not all(
+            char.isalnum() or char in ".^=_-" for char in symbol
+        ):
+            return {"error": "Enter a valid stock ticker symbol."}
+
         url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
         headers = {"User-Agent": "Mozilla/5.0"}
         r = requests.get(url, headers=headers, timeout=5)
